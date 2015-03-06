@@ -7,13 +7,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-      %ul
-        %li <a href='/'>Accounty</a>
-        %li <a href='/help'>Help</a>
-        %li <a href='/about'>About</a>
+    %header{class: 'navbar navbar-inverse navbar-fixed-top'}
+      %div{class: 'container'}
+        %a{id: 'logo', href: '/'}Accounty
+        %nav
+          %ul{class: 'nav navbar-nav navbar-right'}
+            %li <a href='/help'>Help</a>
+            %li <a href='/about'>About</a>
 
-    %div{class: 'content'}
+    %div{class: 'container'}
       = yield
-    %div{class: 'footer'}
+
+    %footer
       %p Accounty (C) 2015 Rafael Rendón Pablo
