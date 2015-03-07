@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).on('ready page:load', function() {
+  $('#toggle-menu').click(function() {
+    $('#main-menu').toggle();
+  });
+});

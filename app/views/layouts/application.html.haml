@@ -2,21 +2,29 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
     %title= full_title(yield(:title))
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header{class: 'navbar navbar-inverse navbar-fixed-top'}
-      %div{class: 'container'}
-        %a{id: 'logo', href: '/'}Accounty
-        %nav
-          %ul{class: 'nav navbar-nav navbar-right'}
-            %li <a href='/help'>Help</a>
-            %li <a href='/about'>About</a>
+    %div{class: 'container-fluid'}
+      %header{class: 'navbar navbar-default', id: 'main-navbar'}
+        %div{class: 'container-fluid'}
+          %button{id: 'toggle-menu', type: 'button', class: 'navbar-toggle collapsed', 'data-toggle' => 'collapse', 'data-target' => '#main-menu'}
+            %span{class: 'sr-only'} Toggle navigation
+            %span{class: 'icon-bar'}
+            %span{class: 'icon-bar'}
+            %span{class: 'icon-bar'}
+          %div{class: 'navbar-header'}
+            %a{class: 'navbar-brand', href: '/'}Accounty
+          %nav{class: 'collapse navbar-collapse', id: 'main-menu'}
+            %ul{class: 'nav navbar-nav navbar-right'}
+              %li <a href='/help'>Help</a>
+              %li <a href='/about'>About</a>
 
-    %div{class: 'container'}
       = yield
 
     %footer
-      %p Accounty (C) 2015 Rafael Rendón Pablo
+      %div{class: 'container'}
+        %p Accounty (C) 2015 Rafael Rendón Pablo

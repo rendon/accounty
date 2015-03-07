@@ -12,21 +12,17 @@ h1 {
 footer {
   padding: 10px;
   text-align: center;
-  //color: white;
-  //background-color: $gray-darker;
-}
-
-#logo {
-  float: left;
-  margin-top: 10px;
-  font-size: 1.7em;
-  text-transform: uppercase;
-  text-decoration: none;
-  &:hover {
-    color: white;
-  }
 }
 
 .center {
   text-align: center;
+}
+
+#main-navbar {
+  a {
+    &:hover {
+      background-color: $brand-primary;
+      color: white;
+    }
+  }
 }
