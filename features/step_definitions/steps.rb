@@ -9,8 +9,3 @@ end
 Then /^I should see "(.*?)"$/ do |content|
   expect(page).to have_content(content)
 end
-
-def path_to(page)
-  return '/' if page == 'home'
-  "/#{page}"
-end

@@ -23,6 +23,10 @@
               %li <a href='/help'>Help</a>
               %li <a href='/about'>About</a>
 
+      %div{class: 'error-messages'}
+        - flash.each do |key, value|
+          %li{class: "alert alert-#{key}"}= value
+
       = yield
 
     %footer
