@@ -1,18 +1,26 @@
-= form_for @user do |f|
-  = render 'shared/error_messages', object: f.object
-  = f.label :name
-  = f.text_field :name
+%div{class: 'row'}
+  %div{class: 'col-md-4 col-md-offset-4'}
+    = form_for @user do |f|
+      = render 'shared/error_messages', object: f.object
+      %div{class: 'form-group'}
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
 
-  = f.label :last_name
-  = f.text_field :last_name
+      %div{class: 'form-group'}
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
 
-  = f.label :email
-  = f.text_field :email
+      %div{class: 'form-group'}
+        = f.label :email
+        = f.text_field :email, class: 'form-control'
 
-  = f.label :password
-  = f.password_field :password
+      %div{class: 'form-group'}
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
 
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
+      %div{class: 'form-group'}
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
 
-  = f.submit 'Create my account'
+      %div{class: 'form-group'}
+        = f.submit 'Create my account', class: 'btn btn-primary btn-block'
