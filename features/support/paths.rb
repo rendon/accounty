@@ -12,6 +12,9 @@ module NavigationHelper
 
     when 'sign up'
       '/signup'
+
+    when 'login'
+      '/login'
     end
   end
 end

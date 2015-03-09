@@ -9,26 +9,9 @@
     = csrf_meta_tags
   %body
     %div{class: 'container-fluid'}
-      %header{class: 'navbar navbar-default', id: 'main-navbar'}
-        %div{class: 'container-fluid'}
-          %button{id: 'toggle-menu', type: 'button', class: 'navbar-toggle collapsed', 'data-toggle' => 'collapse', 'data-target' => '#main-menu'}
-            %span{class: 'sr-only'} Toggle navigation
-            %span{class: 'icon-bar'}
-            %span{class: 'icon-bar'}
-            %span{class: 'icon-bar'}
-          %div{class: 'navbar-header'}
-            %a{class: 'navbar-brand', href: '/'}Accounty
-          %nav{class: 'collapse navbar-collapse', id: 'main-menu'}
-            %ul{class: 'nav navbar-nav navbar-right'}
-              %li <a href='/help'>Help</a>
-              %li <a href='/about'>About</a>
-
-      %div{class: 'error-messages'}
-        - flash.each do |key, value|
-          %li{class: "alert alert-#{key}"}= value
+      = render 'layouts/header'
+      = render 'shared/flash_messages'
 
       = yield
 
-    %footer
-      %div{class: 'container'}
-        %p Accounty (C) 2015 Rafael Rendón Pablo
+    = render 'layouts/footer'

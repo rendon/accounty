@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'users/new.html.haml' do
   it 'displays new user form' do
-    visit new_users_path
+    visit new_user_path
     expect(page).to have_selector('label', text: 'Name')
     expect(page).to have_css('input#user_name')
 
