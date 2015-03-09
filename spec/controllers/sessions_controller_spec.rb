@@ -38,4 +38,15 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    it 'destroys session' do
+      user = create(:user)
+      login_as(user)
+      expect(session[:user_id]).not_to be_nil
+
+      delete :destroy
+      expect(session[:user_id]).to be_nil
+    end
+  end
 end
