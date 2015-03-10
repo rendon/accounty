@@ -6,6 +6,22 @@ RSpec.describe StaticPagesController, type: :controller do
       get :home
       expect(response).to have_http_status(:success)
     end
+
+    context 'when the user is not logged in' do
+      it 'renders home template' do
+        get :home
+        expect(response).to render_template(:home)
+      end
+    end
+
+    context 'when the user is logged in' do
+      it 'renders dashboard template' do
+        user = create(:user)
+        login_as(user)
+        get :home
+        expect(response).to render_template(:dashboard)
+      end
+    end
   end
 
   describe 'GET #help' do

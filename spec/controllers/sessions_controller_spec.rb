@@ -2,9 +2,20 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
   describe 'GET #new' do
-    it 'returns HTTP success' do
-      get :new
-      expect(response).to have_http_status(:success)
+    context 'when the user is not logged in' do
+      it 'returns HTTP success' do
+        get :new
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'when the user is logged in' do
+      it 'redirects to the profile page' do
+        user = create(:user)
+        login_as(user)
+        get :new
+        expect(response).to redirect_to(user_path(user))
+      end
     end
   end
 

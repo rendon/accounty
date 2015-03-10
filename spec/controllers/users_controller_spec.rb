@@ -2,14 +2,25 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'GET #new' do
-    it 'returns HTTP success' do
-      get :new
-      expect(response).to have_http_status(:success)
+    context 'when the user is not logged in' do
+      it 'returns HTTP success' do
+        get :new
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'assigns user' do
+        get :new
+        expect(assigns(:user)).not_to be_nil
+      end
     end
 
-    it 'assigns user' do
-      get :new
-      expect(assigns(:user)).not_to be_nil
+    context 'when the user is logged in' do
+      it 'redirect to the profile page' do
+        user = create(:user)
+        login_as(user)
+        get :new
+        expect(response).to redirect_to(user_path(user))
+      end
     end
   end
 
@@ -64,7 +75,8 @@ RSpec.describe UsersController, type: :controller do
       it 'does not assign user' do
         user = create(:user)
         get :show, id: user.id
-        expect(assigns(:user)).to be_nil
+        expect(response).to redirect_to(root_path)
+        expect(flash[:info]).to match /You're not authorized/
       end
     end
 

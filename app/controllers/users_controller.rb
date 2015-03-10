@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    if current_user
+      redirect_to user_path(current_user)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -14,7 +18,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user
     @user = current_user
+    else
+      flash[:info] = "You're not authorized to see this resource."
+      redirect_to root_path
+    end
   end
 
   private
