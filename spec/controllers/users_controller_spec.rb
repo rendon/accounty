@@ -58,4 +58,23 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe 'GET #show' do
+    context 'when the user is not logged in' do
+      it 'does not assign user' do
+        user = create(:user)
+        get :show, id: user.id
+        expect(assigns(:user)).to be_nil
+      end
+    end
+
+    context 'when the user is logged in' do
+      it 'assigns user' do
+        user = create(:user)
+        login_as(user)
+        get :show, id: user.id
+        expect(assigns(:user)).not_to be_nil
+      end
+    end
+  end
 end

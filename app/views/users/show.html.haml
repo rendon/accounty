@@ -1,2 +1,10 @@
-%p= current_user.name
-%p= current_user.email
+%div{class: 'row'}
+  %div{class: 'col-sm-2'}
+    = image_tag "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}", width: 128, height: 128
+  %div{class: 'col-sm-10'}
+    %div
+      %label{class: 'col-sm-1'} Name:
+      %p{class: 'col-sm-11'}= "#{@user.name} #{@user.last_name}"
+    %div
+      %label{class: 'col-sm-1'} Email:
+      %p{class: 'col-sm-11'}= @user.email

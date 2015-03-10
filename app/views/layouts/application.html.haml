@@ -8,10 +8,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %div{class: 'container-fluid'}
-      = render 'layouts/header'
-      = render 'shared/flash_messages'
+    %div{class: 'col-sm-8 col-sm-offset-2'}
+      %div{class: 'container-fluid'}
+        = render 'layouts/header'
+        = render 'shared/flash_messages'
 
-      = yield
+        = yield
 
-    = render 'layouts/footer'
+      = render 'layouts/footer'

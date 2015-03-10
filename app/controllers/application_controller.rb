@@ -1,3 +1,4 @@
+require 'digest/md5'
 class ApplicationController < ActionController::Base
   include SessionsHelper
   # Prevent CSRF attacks by raising an exception.
