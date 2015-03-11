@@ -56,3 +56,14 @@ footer {
   display: block;
   margin-top: 10px;
 }
+
+.inline-form-group {
+  @extend .form-group;
+  label {
+    display: inline;
+  }
+
+  input {
+    display: inline;
+  }
+}
