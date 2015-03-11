@@ -17,6 +17,6 @@ RSpec.describe 'users/new.html.haml' do
     expect(page).to have_selector('label', text: 'Password confirmation')
     expect(page).to have_css('input#user_password_confirmation')
 
-    expect(page).to have_selector('input')
+    expect(page).to have_selector('input.btn')
   end
 end

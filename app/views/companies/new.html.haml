@@ -1,0 +1,20 @@
+%h1 Add company
+
+%div{class: 'row'}
+  %div{class: 'col-sm-6 col-sm-offset-3'}
+    = form_for([@user, @company]) do |f|
+      = render 'shared/error_messages', object: f.object
+      %div{class: 'form-group'}
+        = f.label :name
+        = f.text_field :name
+
+      %div{class: 'form-group'}
+        = f.label :description
+        = f.text_area :description
+
+      %div{class: 'form-group'}
+        = f.label :logo
+        = f.file_field :logo
+
+      %div{class: 'form-group'}
+        = f.submit 'Create', class: 'btn btn-primary btn-block'

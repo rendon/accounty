@@ -76,7 +76,7 @@ RSpec.describe UsersController, type: :controller do
         user = create(:user)
         get :show, id: user.id
         expect(response).to redirect_to(root_path)
-        expect(flash[:info]).to match /You're not authorized/
+        expect(flash[:danger]).to match /You're not authorized/
       end
     end
 

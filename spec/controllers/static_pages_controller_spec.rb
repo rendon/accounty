@@ -15,11 +15,11 @@ RSpec.describe StaticPagesController, type: :controller do
     end
 
     context 'when the user is logged in' do
-      it 'renders dashboard template' do
+      it 'redirects to my companies' do
         user = create(:user)
         login_as(user)
         get :home
-        expect(response).to render_template(:dashboard)
+        expect(response).to redirect_to(user_companies_path(user))
       end
     end
   end

@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if current_user
-      render :dashboard
+      redirect_to user_companies_path(current_user.id)
     else
       render :home
     end

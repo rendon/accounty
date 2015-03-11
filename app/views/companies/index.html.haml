@@ -1,0 +1,9 @@
+%h1 My companies
+
+%div
+  = link_to 'Add company', new_user_company_path(@user), class: 'btn btn-primary'
+
+%div
+  %ul
+    - @companies.each do |company|
+      %li= link_to company.name, user_company_path(@user, id: company.id)

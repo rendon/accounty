@@ -37,7 +37,7 @@ RSpec.describe 'StaticPages', type: :request do
       it 'displays profile page link' do
         user = create(:user)
         login_as(user)
-        get root_path
+        get user_path(user)
         expect(response.body).to include('Profile')
       end
     end
