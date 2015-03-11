@@ -9,6 +9,17 @@ class CompaniesController < ApplicationController
     @companies = @user.companies
   end
 
+  def show
+    unless logged_in? && current_user.id == params[:user_id].to_i
+      flash[:danger] = "You're not authorized to see this resource."
+      redirect_to root_path
+      return
+    end
+
+    @user = User.find_by(id: params[:user_id])
+    @company = Company.find_by(user_id: params[:user_id], id: params[:id])
+  end
+
   def new
     unless logged_in?
       redirect_to root_path

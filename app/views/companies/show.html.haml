@@ -1,0 +1,6 @@
+%h1= @company.name
+%div{class: 'row'}
+  %div{class: 'col-sm-2'}
+    = cl_image_tag(@company.logo, alt: 'logo', width: 128, height: 128)
+  %div{class: 'col-sm-10'}
+    %p= @company.description

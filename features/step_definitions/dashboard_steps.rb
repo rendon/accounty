@@ -40,3 +40,14 @@ Then /^I should see my companies$/ do
     expect(page).to have_content(company.name)
   end
 end
+
+When /^I select my company$/ do
+  click_link @user.companies.first.name
+end
+
+Then /^I should see my company details$/ do
+  company = @user.companies.first
+  expect(page).to have_selector('img')
+  expect(page).to have_content(company.name)
+  expect(page).to have_content(company.description)
+end

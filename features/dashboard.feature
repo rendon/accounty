@@ -27,3 +27,11 @@ Feature: Dashboard
     And I have companies
     When I go to the dashboard
     Then I should see my companies
+
+  Scenario: Show company details
+    Given I am logged in
+    And I have a company
+    When I go to the dashboard
+    And I select my company
+    Then I should see my company details
+    
