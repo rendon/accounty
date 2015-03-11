@@ -25,3 +25,7 @@
 
       %div{class: 'form-group'}
         = f.submit 'Create my account', class: 'btn btn-primary btn-block'
+      %div{class: 'form-group'}
+        %div{class: 'text-center'}
+          = 'Already a user?'
+          = link_to 'Log in', login_path

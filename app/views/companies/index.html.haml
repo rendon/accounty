@@ -1,9 +1,15 @@
 %h1 My companies
 
-%div
+%div{class: 'text-right'}
   = link_to 'Add company', new_user_company_path(@user), class: 'btn btn-primary'
 
 %div
-  %ul
+  %ul{class: 'company-items'}
     - @companies.each do |company|
-      %li= link_to company.name, user_company_path(@user, id: company.id)
+      %li
+        %div{class: 'row'}
+          %div{class: 'col-sm-1'}
+            = cl_image_tag((company.logo || 'company_logo.png'), alt: 'logo', with: 48, height: 48)
+          %div{class: 'col-sm-11'}
+            %div{class: 'company-item-title'}
+              =link_to company.name, user_company_path(@user, id: company.id)

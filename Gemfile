@@ -14,6 +14,8 @@ gem 'sdoc',                 '0.4.0', group: :doc
 gem 'haml',                 '4.0.6'
 gem 'haml-rails',           '0.8.2'
 
+gem 'cloudinary',           '1.0.82'
+
 group :development, :test do
   gem 'sqlite3',            '1.3.9'
   gem 'byebug',             '3.4.0'

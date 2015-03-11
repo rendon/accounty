@@ -26,7 +26,15 @@ class CompaniesController < ApplicationController
     end
 
     user = User.find_by(id: current_user.id)
-    user.companies.build(company_params)
+    company = user.companies.build(company_params)
+    logo = company_params[:logo]
+    if logo && logo.is_a?(ActionDispatch::Http::UploadedFile)
+      data = Cloudinary::Uploader.upload(logo.path)
+      company.logo = "#{data['public_id']}.#{data['format']}"
+    else
+      company.logo = 'company_logo.png'
+    end
+
     if user.save
       redirect_to user_companies_path(current_user)
     else
