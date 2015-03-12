@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   def index
     unless logged_in?
       redirect_to root_path
-      flash[:danger] = "You're not authorized to see this resource."
+      flash[:danger] = MESSAGES[:auth_error]
       return
     end
     @user = current_user
@@ -11,12 +11,12 @@ class CompaniesController < ApplicationController
 
   def show
     unless logged_in? && current_user.id == params[:user_id].to_i
-      flash[:danger] = "You're not authorized to see this resource."
+      flash[:danger] = MESSAGES[:auth_error]
       redirect_to root_path
       return
     end
 
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: current_user.id)
     @company = Company.find_by(user_id: params[:user_id], id: params[:id])
   end
 

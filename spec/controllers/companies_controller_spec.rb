@@ -95,8 +95,8 @@ RSpec.describe CompaniesController, type: :controller do
       it 'rediects to the home page' do
         user = create(:user)
         get :index, user_id: user.id
-        expect(response).to redirect_to root_path
-        expect(flash[:danger]).to match /You're not authorized/
+        expect(response).to redirect_to(root_path)
+        expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe CompaniesController, type: :controller do
       it 'redirects to the home page' do
         get :show, user_id: 1, id: 1
         expect(response).to redirect_to(root_path)
-        expect(flash[:danger]).to match /You're not authorized/
+        expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end
   end

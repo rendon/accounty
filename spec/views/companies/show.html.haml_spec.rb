@@ -1,6 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'companies/show.html.haml', type: :view do
   it 'renders company details' do
+    user = build_stubbed(:user)
+    assign(:user, user)
     company = build_stubbed(:company_with_user)
     assign(:company, company)
     render

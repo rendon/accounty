@@ -1,0 +1,18 @@
+%h1 Accounts
+%div{class: 'text-right'}
+  = link_to 'Add account', new_user_company_account_path(@user, @company), class: 'btn btn-primary'
+
+%table{class: 'table table-hover'}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Category
+      %th Subcategory
+  %tbody
+    - @accounts.each do |account|
+      %tr
+        %td= account.name
+        %td= account.description
+        %td= account.category.camelize
+        %td= account.subcategory.camelize

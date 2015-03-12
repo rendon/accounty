@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if current_user
     @user = current_user
     else
-      flash[:danger] = "You're not authorized to see this resource."
+      flash[:danger] = MESSAGES[:auth_error]
       redirect_to root_path
     end
   end
