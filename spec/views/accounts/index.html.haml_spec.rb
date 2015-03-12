@@ -34,8 +34,8 @@ RSpec.describe 'accounts/index.html.haml', type: :view do
       company.accounts.each do |account|
         expect(rendered).to have_content(account.name)
         expect(rendered).to have_content(account.description)
-        expect(rendered).to have_content(account.category)
-        expect(rendered).to have_content(account.subcategory)
+        expect(rendered).to have_content(account.category.camelize)
+        expect(rendered).to have_content(account.subcategory.camelize)
       end
     end
   end
