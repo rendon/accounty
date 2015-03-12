@@ -1,7 +1,10 @@
-%ul{class: 'breadcrumb'}
-  %li= link_to 'My companies', user_companies_path(@user)
-  %li= link_to @company.name, user_companies_path(@user, @company)
-  %li{class: 'active'} Accounts
+- if logged_in?
+  %ul{class: 'breadcrumb'}
+    %li= link_to 'My companies', user_companies_path(current_user)
+    %li= link_to @company.name, user_company_path(current_user, @company)
+    %li= link_to 'Accounts', user_company_accounts_path(current_user, @company)
+    %li{class: 'active'} New account
+
 
 %h1 Add account
 %div{class: 'row'}
