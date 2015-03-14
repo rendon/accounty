@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :companies do
       resources :accounts
+      resources :operations
     end
   end
   resources :sessions, only: [:new, :create]

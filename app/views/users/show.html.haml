@@ -1,10 +1,11 @@
 %div{class: 'row'}
-  %div{class: 'col-sm-2'}
+  %div{class: 'col-lg-1 col-md-2 col-sm-2 col-xs-12 text-center'}
     = image_tag "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}", width: 128, height: 128
-  %div{class: 'col-sm-10'}
-    %div
-      %label{class: 'col-sm-1'} Name:
-      %p{class: 'col-sm-11'}= "#{@user.name} #{@user.last_name}"
-    %div
-      %label{class: 'col-sm-1'} Email:
-      %p{class: 'col-sm-11'}= @user.email
+  %div{class: 'col-lg-10 col-lg-offset-1 col-md-9 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12'}
+    %div{class: 'row'}
+      %div
+        %label{class: 'col-lg-1 col-md-2 col-sm-2'} Name:
+        %p{class: 'col-lg-11 col-md-10 col-sm-10'}= "#{@user.name} #{@user.last_name}"
+      %div
+        %label{class: 'col-lg-1 col-md-2 col-sm-2'} Email:
+        %p{class: 'col-lg-11 col-md-10 col-sm-10'}= @user.email

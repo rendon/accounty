@@ -1,0 +1,11 @@
+%h1 Add operation
+
+%div{class: 'row'}
+  %div{class: 'col-sm-6 col-sm-offset-3'}
+    = form_for([@user, @company, @operation]) do |f|
+      = render 'shared/error_messages', object: f.object
+      %div{class: 'form-group'}
+        = f.label :description
+        = f.text_area :description, class: 'form-control'
+      %div{class: 'form-group'}
+        = f.submit 'Next', class: 'btn btn-primary btn-block'

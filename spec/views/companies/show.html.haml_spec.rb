@@ -9,5 +9,8 @@ RSpec.describe 'companies/show.html.haml', type: :view do
     expect(rendered).to have_selector('h1', text: company.name)
     expect(rendered).to have_content(company.description)
     expect(rendered).to have_selector('img')
+
+    expect(rendered).to have_selector('a', text: 'Accounts')
+    expect(rendered).to have_selector('a', text: 'Operations')
   end
 end
