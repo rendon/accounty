@@ -86,7 +86,8 @@ RSpec.describe OperationsController, type: :controller do
           post :create, user_id: @user.id,
                         company_id: @company.id,
                         operation: attributes_for(:operation)
-          args = { user_id: @user.id, company_id: @company.id, id: 1 }
+          id = Operation.order(:created_at).last.id
+          args = { user_id: @user.id, company_id: @company.id, id: id }
           expect(response).to redirect_to(user_company_operation_path(args))
           expect(flash[:success]).not_to be_nil
         end
