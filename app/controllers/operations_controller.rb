@@ -15,7 +15,7 @@ class OperationsController < ApplicationController
   def index
     @user = current_user
     @company = @user.companies.find_by(id: params[:company_id])
-    @operations = @company.operations
+    @operations = @company.operations.order(:created_at).reverse
   end
 
   def new
@@ -28,6 +28,8 @@ class OperationsController < ApplicationController
     @user = current_user
     @company = @user.companies.find_by(id: params[:company_id])
     @operation = @company.operations.find_by(id: params[:id])
+    @operation_detail = @operation.operation_details.new
+    @operation_details = @operation.operation_details.order(:created_at).reverse
   end
 
   private

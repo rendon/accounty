@@ -1,4 +1,20 @@
+- if logged_in?
+  %ul{class: 'breadcrumb'}
+    %li= link_to 'My companies', user_companies_path(@current_user)
+    %li= link_to @company.name, user_company_path(current_user, @company)
+    %li{class: 'active'} Operations
 %h1 Operations
 
 %div{class: 'text-right'}
   = link_to 'Add operation', new_user_company_operation_path(@user, @company)
+
+%div
+  %table{class: 'table'}
+    %thead
+      %th Date
+      %th Description
+    %tbody
+      - @operations.each do |operation|
+        %tr
+          %td= operation.created_at.to_s(:long)
+          %td= link_to operation.description, user_company_operation_path(@user, @company, operation)

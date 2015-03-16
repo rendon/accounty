@@ -108,6 +108,7 @@ RSpec.describe OperationsController, type: :controller do
         operation = @company.operations.create(attributes_for(:operation))
         get :show, user_id: @user.id, company_id: @company.id, id: operation.id
         expect(assigns(:operation).id).to be == operation.id
+        expect(assigns(:operation_detail)).not_to be_nil
       end
     end
   end

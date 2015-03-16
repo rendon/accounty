@@ -3,7 +3,7 @@ Feature: Register operation
   I want to register operations to my company
   So that I can keep track of the resources
 
-  Background: Log in and go to the company page
+  Background: Log in and create company
     Given I am logged in
     And I have a company
 
@@ -18,10 +18,3 @@ Feature: Register operation
     When I go to the company Operations
     And I add an operation
     Then I should be at the operation page
-
-  #Scenario: Add details to an operation
-  #  Given I have registered my accounts
-  #  And I have created an operation
-  #  And I am at the operation page
-  #  When I add an operation details
-  #  Then I should see the new detail in the list

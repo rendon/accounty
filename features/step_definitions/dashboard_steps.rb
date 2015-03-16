@@ -21,7 +21,7 @@ Then /^I should have a company$/ do
 end
 
 Given /^I have a company$/ do
-  @user.companies.create(attributes_for(:company))
+  @company = @user.companies.create(attributes_for(:company))
 end
 
 Then /^I should have two companies$/ do

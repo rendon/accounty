@@ -1,1 +1,42 @@
-%div= @operation.description
+- if logged_in?
+  %ul{class: 'breadcrumb'}
+    %li= link_to 'My companies', user_companies_path(@current_user)
+    %li= link_to @company.name, user_company_path(current_user, @company)
+    %li= link_to 'Operations', user_company_operations_path(@user, @company)
+    %li{class: 'active'} Operation details
+
+%div
+  %h1 Description
+  %p= @operation.description
+
+%div{class: 'row'}
+  = form_for([@user, @company, @operation, @operation_detail], class: 'form-horizontal') do |f|
+    = render 'shared/error_messages', object: f.object
+    %div{class: 'form-group'}
+      = f.label :account_id, class: 'col-xs-12 col-sm-2'
+      %div{class: 'col-xs-12 col-sm-3'}
+        = f.select :account_id, options_for_select(Account.all.collect { |a| [a.name, a.id] }), {}, class: 'form-control'
+
+    %div{class: 'form-group'}
+      = f.label :amount, class: 'col-xs-12 col-sm-2'
+      %div{class: 'col-xs-12 col-sm-3'}
+        %div{class: 'input-group'}
+          %span{class: 'input-group-addon'}$
+          = f.text_field :amount, class: 'form-control'
+
+    %div{class: 'form-group'}
+      %div{class: 'col-xs-12 col-sm-2'}
+        = f.submit 'Add', class: 'btn btn-primary btn-block'
+
+  %table{class: 'table'}
+    %thead
+      %th Account
+      %th Amount
+
+    %tbody
+      - @operation_details.each do |detail|
+        - unless detail.account.nil?
+          %tr
+            %td= detail.account.name
+            %td= detail.amount
+  
