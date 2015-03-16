@@ -2,26 +2,33 @@ require 'rails_helper'
 RSpec.describe AccountsController, type: :controller do
   context 'when the user is not logged in' do
     describe 'GET #index' do
-      it 'redirects to the home page' do
+      it 'redirects to the login page' do
         get :index, user_id: 1, company_id: 1
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end
 
     describe 'GET #new' do
-      it 'redirects to the home page' do
+      it 'redirects to the login page' do
         get :new, user_id: 1, company_id: 1
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end
     
     describe 'POST #create' do
-      it 'redirects to the home page' do
+      it 'redirects to the login page' do
         post :create, user_id: 1, company_id: 1, account: {}
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:danger]).to be == MESSAGES[:auth_error]
+      end
+    end
+
+    describe 'POST #show' do
+      it 'redirects to the login page' do
+        get :show, user_id: 1, company_id: 1, id: 1
+        expect(response).to redirect_to login_path
       end
     end
   end
@@ -76,6 +83,14 @@ RSpec.describe AccountsController, type: :controller do
           post :create, user_id: @user.id, company_id: @company.id, account: account
           expect(response).to render_template(:new)
         end
+      end
+    end
+
+    describe 'GET #show' do
+      it 'renders show template' do
+        account = @company.accounts.create(attributes_for(:account))
+        get :show, user_id: @user.id, company_id: @company.id, id: account.id
+        expect(response).to render_template(:show)
       end
     end
   end

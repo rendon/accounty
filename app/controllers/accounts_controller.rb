@@ -1,11 +1,7 @@
 class AccountsController < ApplicationController
-  def index
-    unless logged_in?
-      flash[:danger] = MESSAGES[:auth_error]
-      redirect_to root_path
-      return
-    end
+  before_action :check_logged_in
 
+  def index
     if params[:user_id].to_i != current_user.id
       flash[:danger] = MESSAGES[:auth_error]
       redirect_to user_companies_path(current_user)
@@ -23,23 +19,12 @@ class AccountsController < ApplicationController
   end
 
   def new
-    unless logged_in? && current_user.id == params[:user_id].to_i
-      flash[:danger] = MESSAGES[:auth_error]
-      redirect_to root_path
-      return
-    end
     @user = current_user
     @company = @user.companies.find_by(id: params[:company_id])
     @account = @company.accounts.new
   end
 
   def create
-    unless logged_in? && current_user.id == params[:user_id].to_i
-      flash[:danger] = MESSAGES[:auth_error]
-      redirect_to root_path
-      return
-    end
-
     @user = current_user
     @company = @user.companies.find_by(id: params[:company_id])
     @account = @company.accounts.build(account_params)
@@ -49,6 +34,12 @@ class AccountsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @user = current_user
+    @company = @user.companies.find(params[:company_id])
+    @account = @company.accounts.find(params[:id])
   end
 
   private

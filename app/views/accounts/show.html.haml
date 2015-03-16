@@ -1,0 +1,19 @@
+- if logged_in?
+  %ul{class: 'breadcrumb'}
+    %li= link_to 'My companies', user_companies_path(@current_user)
+    %li= link_to @company.name, user_company_path(current_user, @company)
+    %li= link_to 'Accounts', user_company_accounts_path(@user, @company)
+    %li{class: 'active'}= @account.name
+
+%h1= @account.name
+
+%div{class: 'row'}
+  %div
+    %label{class: 'col-sm-2'} Description
+    %p{class: 'col-sm-10'}= @account.description
+  %div
+    %label{class: 'col-sm-2'} Category
+    %p{class: 'col-sm-10'}= @account.category.camelize
+  %div
+    %label{class: 'col-sm-2'} Subcategory
+    %p{class: 'col-sm-10'}= @account.subcategory.camelize
