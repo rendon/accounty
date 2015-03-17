@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     end
     session[:user_id] = user.id
     flash[:success] = "Welcome back #{current_user.name}!"
-    redirect_to user_path(current_user)
+    redirect_to root_path
   end
 
   def destroy

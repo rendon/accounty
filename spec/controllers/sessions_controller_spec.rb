@@ -44,7 +44,7 @@ RSpec.describe SessionsController, type: :controller do
       it 'redirects to user profile page' do
         user = create(:user)
         post :create, session: { email: user.email, password: user.password }
-        expect(response).to redirect_to(user_path(user))
+        expect(response).to redirect_to(root_path)
         expect(flash[:success]).not_to be_blank
       end
     end

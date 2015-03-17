@@ -23,3 +23,7 @@ end
 Then /^I should not be logged in$/ do
   expect(page).to have_content('Email and password combination do not match.')
 end
+
+Then /^I should be at the dashboard$/ do
+  expect(page).to have_selector('h1', text: 'My companies')
+end

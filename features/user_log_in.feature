@@ -8,6 +8,7 @@ Feature: User log in
     And I have an account
     When I log in with valid data
     Then I should be logged in
+    And I should be at the dashboard
 
   Scenario: log in with non-registered email
     Given I am at the log in page
