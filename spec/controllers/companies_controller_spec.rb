@@ -67,7 +67,7 @@ RSpec.describe CompaniesController, type: :controller do
 
       context "trying to access someone else's resources" do
         it 'redirects to the dashboard page' do
-          get :show, user_id: 12_345, id: @company.id
+          get :show, user_id: @user.id, id: 12_345
           expect(response).to redirect_to(user_companies_path(@user))
         end
       end

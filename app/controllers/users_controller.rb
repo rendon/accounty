@@ -1,5 +1,7 @@
 # Controller for Users
 class UsersController < ApplicationController
+  before_action :check_logged_in, only: [:show]
+  before_action :check_right_user, only: [:show]
   def new
     if current_user
       redirect_to user_path(current_user)
@@ -33,5 +35,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :last_name, :email, :password,
                                  :password_confirmation)
+  end
+
+  private
+
+  def check_right_user
+    return if params[:id].to_i == current_user.id
+    flash[:danger] = MESSAGES[:access_error]
+    redirect_to user_path(current_user)
   end
 end

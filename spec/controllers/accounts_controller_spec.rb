@@ -58,9 +58,9 @@ RSpec.describe AccountsController, type: :controller do
 
       context "when accessing someone else's company" do
         it 'redirects to the dashboard' do
-          get :index, user_id: 12_345, company_id: 2
+          get :index, user_id: @user.id, company_id: 223
           expect(response).to redirect_to(user_companies_path(@user))
-          expect(flash[:danger]).to be == MESSAGES[:auth_error]
+          expect(flash[:info]).to be == MESSAGES[:not_found]
         end
       end
     end

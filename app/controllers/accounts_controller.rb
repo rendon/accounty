@@ -40,4 +40,18 @@ class AccountsController < ApplicationController
     params.require(:account)
       .permit(:name, :description, :category, :subcategory)
   end
+
+  def check_right_user
+    return if params[:user_id].to_i == current_user.id
+    flash[:danger] = MESSAGES[:access_error]
+    redirect_to user_path(current_user)
+  end
+
+  def check_right_company
+    company = current_user.companies.find_by(id: params[:company_id])
+    unless company
+      flash[:info] = MESSAGES[:not_found]
+      redirect_to user_companies_path(current_user)
+    end
+  end
 end

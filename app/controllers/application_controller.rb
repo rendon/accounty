@@ -14,19 +14,4 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-  def check_right_user
-    if params[:user_id].to_i != current_user.id
-      flash[:danger] = MESSAGES[:auth_error]
-      redirect_to user_companies_path(current_user)
-    end
-  end
-
-  def check_right_company
-    user = User.find(params[:user_id])
-    company = user.companies.find_by(id: params[:company_id])
-    unless company
-      flash[:info] = MESSAGES[:not_found]
-      redirect_to user_companies_path(current_user)
-    end
-  end
 end
