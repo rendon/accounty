@@ -44,7 +44,7 @@ RSpec.describe CompaniesController, type: :controller do
 
       it 'assigns the list of companies' do
         @user.companies.create(attributes_for(:company, name: 'Company X'))
-        @user.companies.create(attributes_for(:company, name: 'Company X'))
+        @user.companies.create(attributes_for(:company, name: 'Company Y'))
         get :index, user_id: @user.id
         expect(assigns(:companies).count).to be == 2
       end

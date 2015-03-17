@@ -12,4 +12,10 @@ RSpec.describe Operation, type: :model do
 
     it { expect(build(:operation, description: 'a')).to be_valid }
   end
+
+  describe '#company_id' do
+    it 'requires :company_id' do
+      expect(build(:operation, company_id: nil)).not_to be_valid
+    end
+  end
 end

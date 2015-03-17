@@ -11,13 +11,13 @@ end
 
 When /^I create a company$/ do
   click_link 'Add company'
-  fill_in 'Name', with: 'Inforscience'
-  fill_in 'Description', with: 'My imaginary company.'
+  fill_in 'Name', with: 'Accounty'
+  fill_in 'Description', with: 'This application'
   click_button 'Create'
 end
 
 Then /^I should have a company$/ do
-  expect(page).to have_content('Inforscience')
+  expect(page).to have_content('Accounty')
 end
 
 Given /^I have a company$/ do

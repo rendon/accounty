@@ -6,6 +6,13 @@ RSpec.describe Company, type: :model do
       company = build(:company_with_user, name: '')
       expect(company).not_to be_valid
     end
+
+    it 'requires unique name by user' do
+      user = create(:user)
+      user.companies.create(attributes_for(:company, user_id: user.id))
+      company = build(:company, user_id: user.id)
+      expect(company).not_to be_valid
+    end
   end
 
   describe '#user_id' do

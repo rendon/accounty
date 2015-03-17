@@ -6,4 +6,5 @@ class Account < ActiveRecord::Base
   validates :description, length: { maximum: 1024 }
   validates :category, inclusion: { in: %w(assets liabilities) }
   validates :subcategory, inclusion: { in: %w(current long_term) }
+  validates :company_id, presence: true
 end

@@ -39,4 +39,10 @@ RSpec.describe Account, type: :model do
       it { expect(build(:account, subcategory: :long_term)).to be_valid    }
     end
   end
+
+  describe '#company_id' do
+    it 'requires :company_id' do
+      expect(build(:account, company_id: nil)).not_to be_valid
+    end
+  end
 end

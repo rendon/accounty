@@ -1,5 +1,6 @@
 # User model
 class User < ActiveRecord::Base
+  before_save { self.email.downcase! }
   has_many :companies
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

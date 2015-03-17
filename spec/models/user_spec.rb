@@ -2,21 +2,21 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'new user' do
     it 'should be valid' do
-      user = User.new(name: 'Rafael',
-                      last_name: 'Rendon Pablo',
-                      email: 'rafaelrendonpablo@gmail.com',
-                      password: '0a1b2c3d4e',
-                      password_confirmation: '0a1b2c3d4e')
+      user = build(:user)
       expect(user).to be_valid
     end
 
-    it 'should be invalid for invalid email' do
-      user = User.new(name: 'Rafael',
-                      last_name: 'Rendon Pablo',
-                      email: 'rafaelrendonpablogmail.com',
-                      password: '0a1b2c3d4e',
-                      password_confirmation: '0a1b2c3d4e')
+    it 'should not be valid for invalid email' do
+      user = build(:user, email: 'johndoemail.com')
       expect(user).not_to be_valid
+    end
+  end
+
+  describe 'email is not case sensitive' do
+    it 'john@mail.com and JOHN@mail.com are the same' do
+      little_john = create(:user, email: 'john@mail.com')
+      big_john = build(:user, email: 'JOHN@mail.com')
+      expect(big_john).not_to be_valid
     end
   end
 
