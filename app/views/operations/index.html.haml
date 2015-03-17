@@ -8,7 +8,13 @@
 %div{class: 'text-right'}
   = link_to 'Add operation', new_user_company_operation_path(@user, @company)
 
-%div
+%br
+%br
+%br
+
+- if @operations.empty?
+  %div{class: 'text-center'} No operations yet.
+- else
   %table{class: 'table'}
     %thead
       %th Date

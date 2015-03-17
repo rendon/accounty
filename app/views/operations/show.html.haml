@@ -32,15 +32,18 @@
   %br
   %br
 
-  %table{class: 'table'}
-    %thead
-      %th Account
-      %th Amount
+  - if @operation_details.empty?
+    %div{class: 'text-center'} No details yet.
+  - else
+    %table{class: 'table'}
+      %thead
+        %th Account
+        %th Amount
 
-    %tbody
-      - @operation_details.each do |detail|
-        - unless detail.account.nil?
-          %tr
-            %td= detail.account.name
-            %td= detail.amount
+      %tbody
+        - @operation_details.each do |detail|
+          - unless detail.account.nil?
+            %tr
+              %td= detail.account.name
+              %td= detail.amount
   

@@ -8,17 +8,16 @@
 %div{class: 'text-right'}
   = link_to 'Add account', new_user_company_account_path(@user, @company), class: 'btn btn-primary'
 
-%table{class: 'table table-hover'}
-  %thead
-    %tr
-      %th Name
-      %th Description
-      -#%th Category
-      -#%th Subcategory
-  %tbody
-    - @accounts.each do |account|
+- if @accounts.empty?
+  %div{class: 'text-center'} No accounts yet.
+- else
+  %table{class: 'table'}
+    %thead
       %tr
-        %td= link_to account.name, user_company_account_path(@user, @company, account)
-        %td= account.description
-        -#%td= account.category.camelize
-        -#%td= account.subcategory.camelize
+        %th Name
+        %th Description
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td= link_to account.name, user_company_account_path(@user, @company, account)
+          %td= account.description

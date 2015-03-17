@@ -27,9 +27,9 @@ RSpec.describe UsersController, type: :controller do
   describe 'POST #create' do
     context 'when user is valid' do
       it 'redirects to the home page' do
-        user = attributes_for(:user)
-        post :create, user: user
-        expect(response).to redirect_to root_path
+        post :create, user: attributes_for(:user)
+        user = User.order(:created_at).last
+        expect(response).to redirect_to user_path(user)
       end
     end
 

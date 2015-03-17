@@ -3,13 +3,10 @@ Feature: Sign Up
   I want to create an account
   So that I can use the application
   
-  #Background:
-  #  Given I am at the sign up page
-
   Scenario: Sign up with valid data
     Given I am at the sign up page
     When I sign up with valid data
-    Then I should be signed in
+    Then I should be logged in
 
   Scenario: Sign up with invalid email
     Given I am at the sign up page

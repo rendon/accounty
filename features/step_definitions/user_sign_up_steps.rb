@@ -7,9 +7,8 @@ When /^I sign up with valid data$/ do
   click_button 'Create my account'
 end
 
-Then /^I should be signed in$/ do
-  expect(page).to have_css('li.alert-success')
-  expect(page).to have_content('successfully.')
+Then /^I should be logged in$/ do
+  expect(page).to have_selector('a', text: 'Log out')
 end
 
 When /^I sign up with an invalid email$/ do

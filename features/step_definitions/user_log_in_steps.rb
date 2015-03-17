@@ -20,10 +20,6 @@ When /^I log in with the wrong password$/ do
   click_button 'Log in'
 end
 
-Then /^I should be logged in$/ do
-  expect(page).to have_content("Welcome back #{@user.name}!")
-end
-
 Then /^I should not be logged in$/ do
   expect(page).to have_content('Email and password combination do not match.')
 end
