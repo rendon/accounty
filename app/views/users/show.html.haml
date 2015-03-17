@@ -1,3 +1,5 @@
+%h1 Profile
+
 %div{class: 'row'}
   %div{class: 'col-lg-1 col-md-2 col-sm-2 col-xs-12 text-center'}
     = image_tag "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}", width: 128, height: 128

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   def check_logged_in
     return if logged_in?
     flash[:danger] = MESSAGES[:auth_error]
+    session[:previous_url] = request.fullpath
     redirect_to login_path
   end
 

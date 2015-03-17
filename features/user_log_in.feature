@@ -21,3 +21,11 @@ Feature: User log in
     And I have an account
     And I log in with the wrong password
     Then I should not be logged in
+
+  Scenario: Redirect to the requested resource after login
+    Given I have an account
+    When I go to my profile page
+    Then I should be redirected to the login page
+    When I log in with valid data
+    Then I should be at my profile page
+

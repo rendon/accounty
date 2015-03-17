@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 8 }, allow_blank: true
+
+  def full_name
+    "#{name} #{last_name}"
+  end
 end

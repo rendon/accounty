@@ -47,6 +47,13 @@ RSpec.describe SessionsController, type: :controller do
         expect(response).to redirect_to(root_path)
         expect(flash[:success]).not_to be_blank
       end
+
+      it 'redirect to the previous path after login' do
+        user = create(:user)
+        session[:previous_url] = user_path(user)
+        post :create, session: { email: user.email, password: user.password }
+        expect(response).to redirect_to(user_path(user))
+      end
     end
   end
 

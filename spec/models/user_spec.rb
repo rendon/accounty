@@ -19,4 +19,11 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
   end
+
+  describe '#full_name' do
+    it 'returns the full name' do
+      user = create(:user)
+      expect(user.full_name).to be == "#{user.name} #{user.last_name}"
+    end
+  end
 end
