@@ -29,21 +29,39 @@
         = f.submit 'Add', class: 'btn btn-primary btn-block'
 
   %br
+
   %br
   %br
 
-  - if @operation_details.empty?
-    %div{class: 'text-center'} No details yet.
-  - else
-    %table{class: 'table'}
-      %thead
-        %th Account
-        %th Amount
+- if @operation_details.empty?
+  %div{class: 'text-center'} No details yet.
+- else
+  %div{class: 'col-sm-4'}
+    = 'Ingress: '
+    %span{class: 'number'}= "$#{@operation.ingress}"
+  %div{class: 'col-sm-4'}
+    = 'Egress: '
+    %span{class: 'number'}= "$#{@operation.egress}"
+  %div{class: 'col-sm-4'}
+    = 'Balance: '
+    - if @operation.balance >= 0
+      %span{class: 'black-number'}= "$#{@operation.balance}"
+    - else
+      %span{class: 'red-number'}= "$#{@operation.balance}"
+  %table{class: 'table'}
+    %thead
+      %th Account
+      %th Amount
 
-      %tbody
-        - @operation_details.each do |detail|
-          - unless detail.account.nil?
-            %tr
-              %td= detail.account.name
-              %td= detail.amount
-  
+    %tbody
+      - @operation_details.each do |detail|
+        - unless detail.account.nil?
+          %tr
+            %td= detail.account.name
+            %td
+              - if detail.asset?
+                %span{class: 'asset-icon'}
+              - else
+                %span{class: 'liability-icon'}
+              %span{class: 'number'}= detail.amount
+

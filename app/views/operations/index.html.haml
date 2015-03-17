@@ -23,4 +23,9 @@
       - @operations.each do |operation|
         %tr
           %td= operation.created_at.to_s(:long)
-          %td= link_to operation.description, user_company_operation_path(@user, @company, operation)
+          %td
+            - if operation.balance == 0
+              %span{class: 'balanced-icon', title: 'Balanced'}
+            - else
+              %span{class: 'unbalanced-icon', title: 'Unbalanced'}
+            =link_to operation.description, user_company_operation_path(@user, @company, operation)

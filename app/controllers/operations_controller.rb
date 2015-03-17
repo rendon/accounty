@@ -34,6 +34,10 @@ class OperationsController < ApplicationController
     @operation = @company.operations.find_by(id: params[:id])
     @operation_detail = @operation.operation_details.new
     @operation_details = @operation.operation_details.order(:created_at).reverse
+    @detail_class = {}
+    @operation_details.each do |detail|
+      @detail_class[detail.id] = detail.asset? ? 'success' : 'danger'
+    end
   end
 
   private

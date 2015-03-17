@@ -67,3 +67,43 @@ footer {
     display: inline;
   }
 }
+
+.number {
+  font-family: monospace;
+}
+
+.black-number {
+  @extend .number;
+  display: inline;
+  color: black;
+}
+
+.red-number {
+  @extend .number;
+  display: inline;
+  color: red;
+}
+
+.unbalanced-icon {
+  @extend .glyphicon;
+  @extend .glyphicon-warning-sign;
+  color: red;
+}
+
+.balanced-icon {
+  @extend .glyphicon;
+  @extend .glyphicon-ok;
+  color: green;
+}
+
+.asset-icon {
+  @extend .glyphicon;
+  @extend .glyphicon-plus;
+  color: green;
+}
+
+.liability-icon {
+  @extend .glyphicon;
+  @extend .glyphicon-minus;
+  color: red;
+}

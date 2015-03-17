@@ -5,4 +5,12 @@ class OperationDetail < ActiveRecord::Base
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :account_id, presence: true
   validates :operation_id, presence: true
+
+  def asset?
+    account.category == 'assets' 
+  end
+
+  def liability?
+    account.category == 'liabilities'
+  end
 end
