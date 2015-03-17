@@ -7,6 +7,7 @@ Feature: Sign Up
     Given I am at the sign up page
     When I sign up with valid data
     Then I should be logged in
+    And I should be at the dashboard
 
   Scenario: Sign up with invalid email
     Given I am at the sign up page

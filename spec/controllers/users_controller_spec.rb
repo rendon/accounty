@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
         it 'redirects to the home page' do
           post :create, user: attributes_for(:user)
           user = User.order(:created_at).last
-          expect(response).to redirect_to user_path(user)
+          expect(response).to redirect_to user_companies_path(user)
         end
       end
 
