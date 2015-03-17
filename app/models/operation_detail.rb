@@ -1,3 +1,4 @@
+# OperationDetail model
 class OperationDetail < ActiveRecord::Base
   belongs_to :operation
   belongs_to :account

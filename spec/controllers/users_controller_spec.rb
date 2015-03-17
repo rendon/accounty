@@ -56,14 +56,14 @@ RSpec.describe UsersController, type: :controller do
 
       it 'fails when password is too short' do
         user =  attributes_for(:user, password: 'aaaaaaa',
-                               password_confirmation: 'aaaaaaa')
+                                      password_confirmation: 'aaaaaaa')
         post :create, user: user
         expect(response).to render_template(:new)
       end
-      
+
       it 'fails when password and password confirmation do not match' do
         user =  attributes_for(:user, password: 'aaaaaaaa',
-                               password_confirmation: 'bbbbbbbb')
+                                      password_confirmation: 'bbbbbbbb')
         post :create, user: user
         expect(response).to render_template(:new)
       end

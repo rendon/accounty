@@ -1,3 +1,4 @@
+# Controller for Static Pages
 class StaticPagesController < ApplicationController
   def home
     if current_user
@@ -8,10 +9,8 @@ class StaticPagesController < ApplicationController
   end
 
   def help
-
   end
 
   def about
-
   end
 end

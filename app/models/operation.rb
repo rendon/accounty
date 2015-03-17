@@ -1,3 +1,4 @@
+# Operation model
 class Operation < ActiveRecord::Base
   belongs_to :company
   has_many :operation_details

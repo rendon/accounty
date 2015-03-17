@@ -1,3 +1,4 @@
+# Company model
 class Company < ActiveRecord::Base
   belongs_to :user
   has_many :accounts

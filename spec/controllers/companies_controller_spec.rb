@@ -66,9 +66,9 @@ RSpec.describe CompaniesController, type: :controller do
       end
 
       context "trying to access someone else's resources" do
-        it 'redirects to the home page' do
-          get :show, user_id: 12345, id: @company.id
-          expect(response).to redirect_to(root_path)
+        it 'redirects to the dashboard page' do
+          get :show, user_id: 12_345, id: @company.id
+          expect(response).to redirect_to(user_companies_path(@user))
         end
       end
     end
@@ -76,34 +76,34 @@ RSpec.describe CompaniesController, type: :controller do
 
   context 'when the user is not logged in' do
     describe 'GET #new' do
-      it 'redirects to home page' do
+      it 'redirects to login page' do
         get :new, user_id: 1
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
     describe 'POST #create' do
-      it 'redirects to home page' do
+      it 'redirects to login page' do
         user = create(:user)
         company = attributes_for(:company)
         post :create, user_id: user.id, company: company
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
     describe 'GET #index' do
-      it 'rediects to the home page' do
+      it 'rediects to the login page' do
         user = create(:user)
         get :index, user_id: user.id
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end
 
     describe 'GET #show' do
-      it 'redirects to the home page' do
+      it 'redirects to the login page' do
         get :show, user_id: 1, id: 1
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:danger]).to be == MESSAGES[:auth_error]
       end
     end

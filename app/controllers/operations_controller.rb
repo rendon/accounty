@@ -1,5 +1,9 @@
+# Controller for Operations
 class OperationsController < ApplicationController
   before_action :check_logged_in
+  before_action :check_right_user
+  before_action :check_right_company
+
   def create
     @user = current_user
     @company = @user.companies.find_by(id: params[:company_id])
