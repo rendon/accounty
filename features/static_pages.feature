@@ -18,7 +18,6 @@ Feature: Create site's static pages
   Scenario: Help page
     Given I am at the help page
     Then I should see a link with "Help"
-    And I should see "Getting started"
 
   Scenario: About page
     Given I am at the about page
