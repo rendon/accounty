@@ -3,6 +3,7 @@ class OperationsController < ApplicationController
   before_action :check_logged_in
   before_action :check_right_user
   before_action :check_right_company
+  before_action :check_right_operation, only: [:show]
 
   def create
     @user = current_user
@@ -55,7 +56,16 @@ class OperationsController < ApplicationController
   def check_right_company
     company = current_user.companies.find_by(id: params[:company_id])
     unless company
-      flash[:info] = MESSAGES[:not_found]
+      flash[:danger] = MESSAGES[:not_found]
+      redirect_to user_companies_path(current_user)
+    end
+  end
+
+  def check_right_operation
+    company = current_user.companies.find_by(id: params[:company_id])
+    operation = company.operations.find_by(id: params[:id])
+    unless operation
+      flash[:danger] = MESSAGES[:not_found]
       redirect_to user_companies_path(current_user)
     end
   end
