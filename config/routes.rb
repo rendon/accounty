@@ -12,10 +12,14 @@ Rails.application.routes.draw do
       resources :operations do
         resources :operation_details, only: [:new, :create]
       end
-      resources :reports, only: [:new, :create]
+      resources :reports, only: [:new, :create] do
+        collection do
+          get 'xlsx'
+        end
+      end
     end
   end
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

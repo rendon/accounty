@@ -6,20 +6,22 @@
 
 %h1 Reports
 
-= form_for(:report, url: user_company_reports_path(@user, @company)) do |f|
-  = f.label :start_date, class: 'col-sm-2'
+= form_tag(new_user_company_report_path(@user, @company), method: :get) do |f|
+  = label_tag 'start_date', 'Start date:', class: 'col-sm-2'
   %div{class: 'col-sm-3'}
-    = f.text_field :start_date, class: 'form-control', value: @start_date
+    = text_field_tag 'start_date', @start_date, class: 'form-control'
 
-  = f.label :end_date, class: 'col-sm-2'
+  = label_tag 'end_date', 'End date:', class: 'col-sm-2'
   %div{class: 'col-sm-3'}
-    = f.text_field :end_date, class: 'form-control', value: @end_date
+    = text_field_tag 'end_date', @end_date, class: 'form-control'
   %div{class: 'col-sm-2'}
-    = f.submit 'Generate', class: 'btn btn-primary btn-block'
+    = submit_tag 'Generate', class: 'btn btn-primary btn-block'
 %br
 %br
 
 - if @operations
+  %div{class: 'text-center'}
+    = link_to 'Download XLSX', xlsx_user_company_reports_path(@user, @company, format: 'xlsx', params: { start_date: @start_date, end_date: @end_date})
   %table{class: 'table'}
     %thead
       %th Date

@@ -7,13 +7,6 @@ RSpec.describe ReportsController, type: :controller do
         expect(response).to redirect_to(login_path)
       end
     end
-
-    describe 'POST #create' do
-      it 'redirects to the login page' do
-        post :create, user_id: 1, company_id: 1
-        expect(response).to redirect_to(login_path)
-      end
-    end
   end
 
   context 'when the user is logged in' do
@@ -37,20 +30,6 @@ RSpec.describe ReportsController, type: :controller do
       it 'assigns company' do
         get :new, user_id: @user.id, company_id: @company.id
         expect(assigns(:company).id).to be == @company.id
-      end
-    end
-
-    describe 'POST #create' do
-      it 'assigns :operations' do
-        report = { start_date: '2015/1/1', end_date: '2015/2/1' }
-        post :create, user_id: @user.id, company_id: @company.id, report: report
-        expect(assigns(:operations)).not_to be_nil
-      end
-
-      it 'renders :new' do
-        report = { start_date: '2015/1/1', end_date: '2015/2/1' }
-        post :create, user_id: @user.id, company_id: @company.id, report: report
-        expect(response).to render_template(:new)
       end
     end
   end

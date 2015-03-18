@@ -15,8 +15,8 @@ RSpec.describe 'reports/new.html.haml', type: :view do
 
     it 'displays report form' do
       render
-      expect(rendered).to have_css('input#report_start_date')
-      expect(rendered).to have_css('input#report_end_date')
+      expect(rendered).to have_css('input#start_date')
+      expect(rendered).to have_css('input#end_date')
       expect(rendered).to have_css('input.btn')
     end
   end

@@ -5,23 +5,34 @@ class ReportsController < ApplicationController
   def new
     @user = current_user
     @company = current_user.companies.find(params[:company_id])
-    @start_date = date_to_str(Time.now.beginning_of_month)
-    @end_date = date_to_str(Time.now)
+    if params[:start_date] && params[:end_date]
+      @start_date = params[:start_date]
+      @end_date = params[:end_date]
+      @operations = report(@company, @start_date, @end_date)
+    else
+      @start_date = date_to_str(Time.now.beginning_of_month)
+      @end_date = date_to_str(Time.now)
+    end
   end
 
-  def create
-    @user = current_user
+  def xlsx
     @company = current_user.companies.find(params[:company_id])
-    @start_date = params[:report][:start_date]
-    @end_date = params[:report][:end_date]
-    sql = 'created_at >= :start_date AND created_at <= :end_date'
-    parameters = { start_date: str_to_date(@start_date),
-                   end_date: str_to_date(@end_date).end_of_day }
-    @operations = @company.operations.where(sql, parameters)
-    render :new
+    @operations = report(@company, params[:start_date], params[:end_date])
+    respond_to do |format|
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Report.xlsx"'
+      }
+    end
   end
-  
+
   private
+
+  def report(company, start_date, end_date)
+    sql = 'created_at >= :start_date AND created_at <= :end_date'
+    parameters = { start_date: str_to_date(start_date),
+                   end_date: str_to_date(end_date).end_of_day }
+    company.operations.where(sql, parameters)
+  end
 
   def check_right_company
     company = current_user.companies.find_by(id: params[:company_id])

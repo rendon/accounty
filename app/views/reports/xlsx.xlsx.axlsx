@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  centered_cell = s.add_style :alignment => { :horizontal=> :center }
+  wb.add_worksheet(name: 'Report') do |sheet|
+    sheet.add_row ['Operations', ''], style: centered_cell
+    sheet.merge_cells('A1:B1')
+    @operations.each do |operation|
+      sheet.add_row [operation.created_at, operation.description]
+    end
+  end
+end

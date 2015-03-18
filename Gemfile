@@ -15,6 +15,8 @@ gem 'haml',                 '4.0.6'
 gem 'haml-rails',           '0.8.2'
 
 gem 'cloudinary',           '1.0.82'
+gem 'acts_as_xlsx',         '1.0.6'
+gem 'axlsx_rails',          '0.3.0'
 
 group :development, :test do
   gem 'sqlite3',            '1.3.9'
