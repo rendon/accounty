@@ -4,13 +4,18 @@
     %li{class: 'active'}= @company.name
 
 %h1= @company.name
-%div{class: 'row'}
-  %div{class: 'col-sm-2 text-center'}
-    = cl_image_tag(@company.logo, alt: 'logo', width: 128, height: 128)
-  %div{class: 'col-sm-9 col-sm-offset-1'}
-    %p= @company.description
 
-    %div{class: 'text-right'}
-      = link_to 'Operations', user_company_operations_path(@user, @company), class: 'btn btn-primary'
-      = link_to 'Accounts', user_company_accounts_path(@user, @company), class: 'btn btn-primary'
-      = link_to 'Reports', new_user_company_report_path(@user, @company), class: 'btn btn-primary'
+%div{class: 'row'}
+  %div{class: 'container-fluid'}
+    %ul{class: 'nav navbar-nav'}
+      %li= link_to 'Operations', user_company_operations_path(@user, @company)
+      %li= link_to 'Accounts', user_company_accounts_path(@user, @company)
+      %li= link_to 'Reports', new_user_company_report_path(@user, @company)
+%br
+
+%div{class: 'row'}
+  %div{class: 'container-fluid'}
+    %div{class: 'col-sm-2 text-center'}
+      = cl_image_tag(@company.logo, alt: 'logo', width: 128, height: 128)
+    %div{class: 'col-sm-9 col-sm-offset-1'}
+      %p= @company.description

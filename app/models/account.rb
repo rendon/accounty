@@ -7,4 +7,8 @@ class Account < ActiveRecord::Base
   validates :category, inclusion: { in: %w(assets liabilities) }
   validates :subcategory, inclusion: { in: %w(current long_term) }
   validates :company_id, presence: true
+
+  def asset?
+    category == 'assets'
+  end
 end

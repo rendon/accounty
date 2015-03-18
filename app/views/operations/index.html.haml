@@ -3,10 +3,13 @@
     %li= link_to 'My companies', user_companies_path(@current_user)
     %li= link_to @company.name, user_company_path(current_user, @company)
     %li{class: 'active'} Operations
+
 %h1 Operations
 
-%div{class: 'text-right'}
-  = link_to 'Add operation', new_user_company_operation_path(@user, @company), class: 'btn btn-primary'
+%div{class: 'row'}
+  %div{class: 'container-fluid'}
+    %ul{class: 'nav navbar-nav'}
+      %li= link_to 'Add operation', new_user_company_operation_path(@user, @company)
 
 %br
 %br

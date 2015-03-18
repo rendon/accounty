@@ -5,8 +5,13 @@
     %li{class: 'active'} Accounts
 
 %h1 Accounts
-%div{class: 'text-right'}
-  = link_to 'Add account', new_user_company_account_path(@user, @company), class: 'btn btn-primary'
+
+%div{class: 'row'}
+  %div{class: 'container-fluid'}
+    %ul{class: 'nav navbar-nav'}
+      %li= link_to 'Add account', new_user_company_account_path(@user, @company)
+
+%br
 
 - if @accounts.empty?
   %div{class: 'text-center'} No accounts yet.
@@ -19,5 +24,13 @@
     %tbody
       - @accounts.each do |account|
         %tr
-          %td= link_to account.name, user_company_account_path(@user, @company, account)
+          %td
+            - if account.asset?
+              %span{class: 'asset-icon', title: 'Asset'}
+            - else
+              %span{class: 'liability-icon', title: 'Liability'}
+            = link_to account.name, user_company_account_path(@user, @company, account)
           %td= account.description
+
+
+

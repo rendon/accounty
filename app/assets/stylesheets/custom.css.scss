@@ -40,10 +40,15 @@ footer {
 
 .company-items {
   li {
-    list-style: none;
-    height: 80px;
+    list-style-type: none;
+    height: 100px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    &:hover {
+      background-color: $gray-lighter;
+
+    }
   }
 
   a {
@@ -54,7 +59,30 @@ footer {
 
 .company-item-title {
   display: block;
+  text-align: left;
   margin-top: 10px;
+}
+
+.text-left-center-xs {
+    text-align: center;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .text-left-center-sm {
+        text-align: left;
+    }
+}
+
+.text-right-center-xs {
+    text-align: center;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .text-right-center-sm {
+        text-align: right;
+    }
 }
 
 .inline-form-group {
