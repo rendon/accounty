@@ -12,5 +12,6 @@ RSpec.describe 'companies/show.html.haml', type: :view do
 
     expect(rendered).to have_selector('a', text: 'Accounts')
     expect(rendered).to have_selector('a', text: 'Operations')
+    expect(rendered).to have_selector('a', text: 'Reports')
   end
 end

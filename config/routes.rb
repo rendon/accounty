@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :operations do
         resources :operation_details, only: [:new, :create]
       end
+      resources :reports, only: [:new, :create]
     end
   end
   resources :sessions, only: [:new, :create]

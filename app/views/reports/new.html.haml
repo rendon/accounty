@@ -1,0 +1,32 @@
+- if logged_in?
+  %ul{class: 'breadcrumb'}
+    %li= link_to 'My companies', user_companies_path(current_user)
+    %li= link_to @company.name, user_company_path(current_user, @company)
+    %li{class: 'active'} Reports
+
+%h1 Reports
+
+= form_for(:report, url: user_company_reports_path(@user, @company)) do |f|
+  = f.label :start_date, class: 'col-sm-2'
+  %div{class: 'col-sm-3'}
+    = f.text_field :start_date, class: 'form-control', value: @start_date
+
+  = f.label :end_date, class: 'col-sm-2'
+  %div{class: 'col-sm-3'}
+    = f.text_field :end_date, class: 'form-control', value: @end_date
+  %div{class: 'col-sm-2'}
+    = f.submit 'Generate', class: 'btn btn-primary'
+%br
+%br
+
+- if @operations
+  %table{class: 'table'}
+    %thead
+      %th Date
+      %th Description
+    %tbody
+      - @operations.each do |operation|
+        %tr
+          %td= operation.created_at.to_s(:long)
+          %td= operation.description
+
