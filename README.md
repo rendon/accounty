@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rendon/accounty.svg?branch=master)](https://travis-ci.org/rendon/accounty) [![Coverage Status](https://coveralls.io/repos/rendon/accounty/badge.svg)](https://coveralls.io/r/rendon/accounty)
+
 #Accounty: Personal accounting made easy.
 
 Accounting is very useful because it can help us keep track of or resources, how and when each resource was spent or where a resource come from. However, accounting can be complicated, to do it well you probably need to study a career related to the subject, and that is okay because this is serious stuff.
