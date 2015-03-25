@@ -20,10 +20,26 @@ RSpec.describe CompaniesController, type: :controller do
 
     describe 'POST #create' do
       context 'invalid form submission' do
-        it 'renders new template' do
-          company = attributes_for(:company, name: '')
-          post :create, user_id: @user, company: company
-          expect(response).to render_template(:new)
+        describe 'empty name' do
+          it 'renders the :new template' do
+            company = attributes_for(:company, name: '')
+            post :create, user_id: @user, company: company
+            expect(response).to render_template(:new)
+          end
+        end
+
+        describe 'empty description' do
+          it 'assigns @user' do
+            company = attributes_for(:company, description: '')
+            post :create, user_id: @user, company: company
+            expect(assigns(:user)).not_to be_nil
+          end
+
+          it 'assigns @company' do
+            company = attributes_for(:company, description: '')
+            post :create, user_id: @user, company: company
+            expect(assigns(:company)).not_to be_nil
+          end
         end
       end
 
