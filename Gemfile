@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',                '4.2.0'
+gem 'rails',                '4.2.11'
 gem 'bcrypt',               '3.1.10'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'sass-rails',           '5.0.1'
@@ -24,7 +24,7 @@ group :development, :test do
   gem 'web-console',        '2.1.0'
   gem 'spring',             '1.1.3'
   gem 'cucumber-rails',     '1.4.2', require: false
-  gem 'rspec-rails',        '3.2.1'
+  gem 'rspec-rails',        '3.8.1'
   gem 'factory_girl_rails', '4.5.0'
   gem 'database_cleaner',   '1.4.0'
   gem 'coveralls', require: false
