@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/rendon/accounty.svg?branch=master)](https://travis-ci.org/rendon/accounty) [![Coverage Status](https://coveralls.io/repos/rendon/accounty/badge.svg)](https://coveralls.io/r/rendon/accounty)
 
-#Accounty: Personal accounting made easy.
+# Accounty: Personal accounting made easy.
 
 Here's a quick tour (in Spanish): [Reporte de Accounty](http://rendon.x10.mx/accounty/)
 
