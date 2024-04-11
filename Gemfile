@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails',                '4.2.11'
+gem 'rails', '~> 4.2', '>= 4.2.11.3'
 gem 'bcrypt',               '3.1.10'
-gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bootstrap-sass',   '~> 3.2', '>= 3.2.0.4'
 gem 'sass-rails',           '5.0.1'
 gem 'uglifier',             '2.5.3'
 gem 'coffee-rails',         '4.1.0'
@@ -20,7 +20,7 @@ gem 'axlsx_rails',          '0.3.0'
 
 group :development, :test do
   gem 'sqlite3',            '1.3.9'
-  gem 'byebug',             '3.4.0'
+  gem 'byebug', '~> 10.0', '>= 10.0.2'
   gem 'web-console',        '2.1.0'
   gem 'spring',             '1.1.3'
   gem 'cucumber-rails',     '1.4.2', require: false
@@ -34,6 +34,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg',                 '0.17.1'
+  gem 'pg', '~> 1.1', '>= 1.1.3'
   gem 'rails_12factor',     '0.0.2'
 end
