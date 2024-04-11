@@ -1,5 +1,5 @@
 language: ruby
 rvm:
-  - "2.5.3"
+  - "2.5.9"
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
