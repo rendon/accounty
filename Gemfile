@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2', '>= 4.2.11.3'
-gem 'bcrypt',               '3.1.10'
+gem 'bcrypt', '~> 3.1', '>= 3.1.20'
 gem 'bootstrap-sass',   '~> 3.2', '>= 3.2.0.4'
-gem 'sass-rails',           '5.0.1'
+gem 'sass-rails',           '5.0.3'
 gem 'uglifier',             '2.5.3'
 gem 'coffee-rails',         '4.1.0'
 gem 'jquery-rails',         '4.0.3'
